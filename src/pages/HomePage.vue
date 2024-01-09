@@ -10,7 +10,7 @@
       <div class="col-4 text-center text-secondary fw-bold">{{ currentPage }} <i class="mdi mdi-file-multiple"></i> {{ totalPages }}</div>
       <button @click="changePage(currentPage + 1)" :disabled="currentPage == totalPages" class="col-4 btn btn-info">next<i class="mdi mdi-arrow-right"></i></button>
     </section>
-
+    <!-- NOTE next and previous for our searches, they work similar but run slightly different functions -->
     <section v-else class="row justify-content-between align-items-baseline my-2">
       <button @click="changeSearchedPage(currentPage - 1)" :disabled="currentPage == 1" class="col-4 btn btn-warning"><i class="mdi mdi-arrow-left"></i>previous</button>
       <div class="col-4 text-center text-secondary fw-bold">{{ currentPage }} <i class="mdi mdi-file-multiple"></i> {{ totalPages }}</div>
@@ -72,6 +72,7 @@ export default {
       async changeSearchedPage(pageNumber){
         try {
           console.log('changing search', pageNumber);
+          // NOTE
           await moviesService.changePage(`search/movie?page=${pageNumber}&query=${AppState.searchedTerm}`)
         } catch (error) {
           Pop.error(error)

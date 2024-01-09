@@ -16,6 +16,8 @@
         class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl"
         role="document"
       >
+      <!-- NOTE v-if here keeps the activeMovie content from trying to render -->
+      <!-- NOTE since activeMovie in the AppState starts null, and we can't say null.title, an active movie is only there after a user clicks on one and tries to get it by it's id -->
         <div class="modal-content" v-if="activeMovie">
           <div class="modal-header">
             <h5 class="modal-title" id="modalTitleId">
