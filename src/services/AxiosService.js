@@ -2,6 +2,20 @@ import Axios from 'axios'
 import { baseURL } from '../env'
 import { logger } from '../utils/Logger.js'
 
+export const movieApi = Axios.create({
+  baseURL: 'https://api.themoviedb.org/3',
+  params: {
+    api_key: '545c6ef058e65396849dfbbf381cbca3',
+    'certification.gte': 'G',
+    'certification.lte': 'PG-13',
+    certification_country: 'US',
+    include_adult: false
+  }
+})
+
+
+
+// REVIEW leave api for our own, apis or the sandbox
 export const api = Axios.create({
   baseURL,
   timeout: 8000
